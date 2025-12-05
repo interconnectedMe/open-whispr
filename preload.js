@@ -170,4 +170,8 @@ contextBridge.exposeInMainWorld("electronAPI", {
   removeAllListeners: (channel) => {
     ipcRenderer.removeAllListeners(channel);
   },
+
+  // Onboarding completion status (persistent across sessions)
+  isOnboardingComplete: () => ipcRenderer.invoke("is-onboarding-complete"),
+  markOnboardingComplete: () => ipcRenderer.invoke("mark-onboarding-complete"),
 });

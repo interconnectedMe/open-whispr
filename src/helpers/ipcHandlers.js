@@ -1,4 +1,6 @@
 const { ipcMain, app, shell, BrowserWindow } = require("electron");
+const fs = require("fs");
+const path = require("path");
 const AppUtils = require("../utils");
 const debugLogger = require("./debugLogger");
 
@@ -523,6 +525,34 @@ class IPCHandlers {
     ipcMain.handle("log-reasoning", async (event, stage, details) => {
       debugLogger.logReasoning(stage, details);
       return { success: true };
+    });
+
+    // Onboarding completion flag (file-based, survives localStorage quirks)
+    ipcMain.handle("mark-onboarding-complete", async () => {
+      try {
+        const flagPath = path.join(app.getPath("userData"), "onboarding.json");
+        const payload = { completed: true, updatedAt: new Date().toISOString() };
+        fs.writeFileSync(flagPath, JSON.stringify(payload, null, 2), "utf8");
+        return { success: true };
+      } catch (error) {
+        debugLogger.error("Failed to write onboarding flag:", error);
+        return { success: false, error: error.message };
+      }
+    });
+
+    ipcMain.handle("is-onboarding-complete", async () => {
+      try {
+        const flagPath = path.join(app.getPath("userData"), "onboarding.json");
+        if (!fs.existsSync(flagPath)) {
+          return false;
+        }
+        const raw = fs.readFileSync(flagPath, "utf8");
+        const data = JSON.parse(raw);
+        return Boolean(data && data.completed);
+      } catch (error) {
+        debugLogger.error("Failed to read onboarding flag:", error);
+        return false;
+      }
     });
   }
 

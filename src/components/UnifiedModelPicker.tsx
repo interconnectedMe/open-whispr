@@ -47,15 +47,15 @@ interface UnifiedModelPickerProps {
 
 const VARIANT_STYLES = {
   onboarding: {
-    container: "bg-gray-50 p-4 rounded-lg",
+    container: "bg-card p-4 rounded-lg border border-border text-foreground",
     progress: "bg-blue-50 border-b border-blue-200",
     progressText: "text-blue-900",
     progressBar: "bg-blue-200",
     progressFill: "bg-gradient-to-r from-blue-500 to-blue-600",
-    header: "font-medium text-gray-900 mb-3",
+    header: "font-medium text-foreground mb-3",
     modelCard: {
-      selected: "border-blue-500 bg-blue-50",
-      default: "border-gray-200 bg-white hover:border-gray-300",
+      selected: "border-blue-500 bg-blue-50 dark:bg-blue-950/40",
+      default: "border-border bg-card hover:border-border/80",
     },
     badges: {
       selected: "text-xs text-blue-600 bg-blue-100 px-2 py-1 rounded-full font-medium",
@@ -69,15 +69,15 @@ const VARIANT_STYLES = {
     },
   },
   settings: {
-    container: "bg-white border border-purple-200 rounded-lg overflow-hidden",
+    container: "bg-card border border-border rounded-lg overflow-hidden text-foreground",
     progress: "bg-purple-50 border-b border-purple-200",
     progressText: "text-purple-900",
     progressBar: "bg-purple-200",
     progressFill: "bg-gradient-to-r from-purple-500 to-purple-600",
-    header: "font-medium text-purple-900",
+    header: "font-medium text-foreground",
     modelCard: {
-      selected: "border-purple-500 bg-purple-50",
-      default: "border-purple-200 bg-white hover:border-purple-300",
+      selected: "border-purple-500 bg-purple-50 dark:bg-purple-950/40",
+      default: "border-border bg-card hover:border-border/80",
     },
     badges: {
       selected: "text-xs text-purple-600 bg-purple-100 px-2 py-1 rounded-full font-medium",
@@ -119,8 +119,8 @@ export function UnifiedModelPickerCompact({
           onClick={() => onModelSelect(model.value)}
           className={`w-full p-3 rounded-lg border-2 text-left transition-all ${
             selectedModel === model.value
-              ? 'border-indigo-500 bg-indigo-50'
-              : 'border-gray-200 bg-white hover:border-gray-300'
+              ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-950/40'
+              : 'border-border bg-card hover:border-border/80'
           }`}
         >
           <div className="flex items-center justify-between">
@@ -131,10 +131,10 @@ export function UnifiedModelPickerCompact({
                 ) : (
                   <Globe className="w-4 h-4 text-gray-400" aria-hidden="true" />
                 )}
-                <span className="font-medium text-gray-900">{model.label}</span>
+                <span className="font-medium text-foreground">{model.label}</span>
               </div>
               {model.description && (
-                <div className="text-xs text-gray-600 mt-1">{model.description}</div>
+                <div className="text-xs text-muted-foreground mt-1">{model.description}</div>
               )}
             </div>
             {selectedModel === model.value && (
@@ -487,7 +487,7 @@ export default function UnifiedModelPicker({
               >
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="font-medium">{model.name}</span>
+                    <span className="font-medium text-foreground">{model.name}</span>
                     {isSelected && (
                       <span className={styles.badges.selected}>✓ Selected</span>
                     )}
@@ -498,8 +498,8 @@ export default function UnifiedModelPicker({
                     )}
                   </div>
                   <div className="flex items-center gap-2 mt-1">
-                    <p className="text-xs text-gray-600">{model.description}</p>
-                    <span className="text-xs text-gray-500">• {model.size}</span>
+                    <p className="text-xs text-muted-foreground">{model.description}</p>
+                    <span className="text-xs text-muted-foreground">• {model.size}</span>
                     {isDownloaded && (
                       <span className={styles.badges.downloaded}>✓ Downloaded</span>
                     )}

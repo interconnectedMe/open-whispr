@@ -92,12 +92,12 @@ const Toast: React.FC<ToastProps & { onClose?: () => void }> = ({
   onClose,
 }) => {
   const baseClasses =
-    "relative flex w-full items-center justify-between space-x-4 overflow-hidden rounded-lg border p-4 pr-8 shadow-lg transition-all duration-300 ease-in-out";
+    "relative flex w-full items-center justify-between space-x-4 overflow-hidden rounded-lg border p-4 pr-8 shadow-lg transition-all duration-300 ease-in-out bg-card border-border text-foreground";
 
   const variantClasses = {
-    default: "bg-white border-gray-200 text-gray-900",
-    destructive: "bg-red-50 border-red-200 text-red-900",
-    success: "bg-green-50 border-green-200 text-green-900",
+    default: "",
+    destructive: "bg-red-50 border-red-200 text-red-900 dark:bg-red-900/30 dark:border-red-700 dark:text-red-100",
+    success: "bg-green-50 border-green-200 text-green-900 dark:bg-green-900/30 dark:border-green-700 dark:text-green-100",
   };
 
   const iconClasses = {
@@ -116,7 +116,7 @@ const Toast: React.FC<ToastProps & { onClose?: () => void }> = ({
       {onClose && (
         <button
           onClick={onClose}
-          className={`absolute right-2 top-2 rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 ${iconClasses[variant]}`}
+          className={`absolute right-2 top-2 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ${iconClasses[variant]}`}
         >
           <X className="h-4 w-4" />
           <span className="sr-only">Close</span>

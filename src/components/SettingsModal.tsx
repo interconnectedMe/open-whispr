@@ -23,6 +23,41 @@ export default function SettingsModal({
   const [activeSection, setActiveSection] =
     React.useState<SettingsSectionType>("general");
 
+  class SettingsErrorBoundary extends React.Component<
+    { children: React.ReactNode },
+    { hasError: boolean; message?: string }
+  > {
+    constructor(props: { children: React.ReactNode }) {
+      super(props);
+      this.state = { hasError: false, message: undefined };
+    }
+
+    static getDerivedStateFromError(error: any) {
+      return { hasError: true, message: error?.message || "Unknown error" };
+    }
+
+    componentDidCatch(error: any, info: any) {
+      // Surface the error to the dev tools / console for debugging
+      // without crashing the whole control panel.
+      // eslint-disable-next-line no-console
+      console.error("Settings page error:", error, info);
+    }
+
+    render() {
+      if (this.state.hasError) {
+        return (
+          <div className="space-y-2 text-sm text-destructive">
+            <p className="font-medium">Settings failed to load.</p>
+            <p className="text-muted-foreground">
+              {this.state.message || "An unexpected error occurred while rendering the Settings page."}
+            </p>
+          </div>
+        );
+      }
+      return this.props.children;
+    }
+  }
+
   return (
     <SidebarModal<SettingsSectionType>
       open={open}
@@ -32,7 +67,9 @@ export default function SettingsModal({
       activeSection={activeSection}
       onSectionChange={setActiveSection}
     >
-      <SettingsPage activeSection={activeSection} />
+      <SettingsErrorBoundary>
+        <SettingsPage activeSection={activeSection} />
+      </SettingsErrorBoundary>
     </SidebarModal>
   );
 }

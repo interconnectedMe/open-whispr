@@ -24,7 +24,7 @@ export default function TitleBar({
 
   return (
     <div
-      className={`bg-white border-b border-gray-100 select-none ${className}`}
+      className={`bg-background border-b border-border select-none ${className}`}
     >
       <div
         className="flex items-center justify-between h-12 px-4"
@@ -33,7 +33,7 @@ export default function TitleBar({
         {/* Left section - title or custom content */}
         <div className="flex items-center gap-2">
           {showTitle && title && (
-            <h1 className="text-sm font-semibold text-gray-900">{title}</h1>
+            <h1 className="text-sm font-semibold text-foreground">{title}</h1>
           )}
           {children}
         </div>

@@ -194,7 +194,7 @@ export default function PromptStudio({ className = "" }: PromptStudioProps) {
           <Eye className="w-5 h-5 text-blue-600" />
           Current AI Prompts
         </h3>
-        <p className="text-sm text-gray-600 mb-6">
+        <p className="text-sm text-muted-foreground mb-6">
           These are the exact prompts currently being sent to your AI models. Understanding these helps you see how OpenWhispr thinks!
         </p>
       </div>
@@ -207,7 +207,7 @@ export default function PromptStudio({ className = "" }: PromptStudioProps) {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="bg-gray-50 border rounded-lg p-4 font-mono text-sm">
+          <div className="bg-card border border-border rounded-lg p-4 font-mono text-sm">
             <pre className="whitespace-pre-wrap">{editedAgentPrompt.replace(/\{\{agentName\}\}/g, agentName)}</pre>
           </div>
           <Button 
@@ -230,7 +230,7 @@ export default function PromptStudio({ className = "" }: PromptStudioProps) {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="bg-gray-50 border rounded-lg p-4 font-mono text-sm">
+          <div className="bg-card border border-border rounded-lg p-4 font-mono text-sm">
             <pre className="whitespace-pre-wrap">{editedRegularPrompt}</pre>
           </div>
           <Button 
@@ -254,7 +254,7 @@ export default function PromptStudio({ className = "" }: PromptStudioProps) {
           <Edit3 className="w-5 h-5 text-indigo-600" />
           Customize Your AI Prompts
         </h3>
-        <p className="text-sm text-gray-600 mb-6">
+        <p className="text-sm text-muted-foreground mb-6">
           Edit these prompts to change how your AI behaves. Use <code>{"{{agentName}}"}</code> and <code>{"{{text}}"}</code> as placeholders.
         </p>
       </div>
@@ -317,23 +317,23 @@ export default function PromptStudio({ className = "" }: PromptStudioProps) {
     
     return (
       <div className="space-y-6">
-        <div>
+      <div>
           <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
             <TestTube className="w-5 h-5 text-green-600" />
             Test Your Prompts
           </h3>
-          <p className="text-sm text-gray-600 mb-6">
+          <p className="text-sm text-muted-foreground mb-6">
             Test your custom prompts with the actual AI model to see real results.
           </p>
         </div>
 
         {!useReasoningModel && (
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
+          <div className="bg-amber-50 border border-amber-200 dark:bg-amber-900/40 dark:border-amber-700 rounded-lg p-4 mb-4">
             <div className="flex items-start gap-3">
               <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="text-sm text-amber-800 font-medium">AI Text Enhancement Disabled</p>
-                <p className="text-sm text-amber-700 mt-1">
+                <p className="text-sm text-amber-800 dark:text-amber-100 font-medium">AI Text Enhancement Disabled</p>
+                <p className="text-sm text-amber-700 dark:text-amber-100/90 mt-1">
                   Enable AI text enhancement in the AI Models settings to test prompts.
                 </p>
               </div>
@@ -345,14 +345,14 @@ export default function PromptStudio({ className = "" }: PromptStudioProps) {
           <CardContent className="p-6 space-y-4">
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="text-gray-600">Current Model:</span>
+                <span className="text-muted-foreground">Current Model:</span>
                 <span className="ml-2 font-medium">{reasoningModel}</span>
               </div>
               <div>
-                <span className="text-gray-600">Provider:</span>
+                <span className="text-muted-foreground">Provider:</span>
                 <span className="ml-2 font-medium capitalize">{providerLabel}</span>
                 {providerConfig.baseStorageKey && (
-                  <div className="text-xs text-gray-500 mt-1 break-all">
+                  <div className="text-xs text-muted-foreground mt-1 break-all">
                     Endpoint: {providerEndpoint || "Not configured"}
                   </div>
                 )}
@@ -368,14 +368,14 @@ export default function PromptStudio({ className = "" }: PromptStudioProps) {
                 placeholder="Enter text to test with your custom prompts..."
               />
               <div className="flex items-center justify-between mt-2">
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-muted-foreground">
                   Try including "{agentName}" in your text to test agent mode prompts
                 </p>
                 {testText && (
                   <span className={`text-xs px-2 py-1 rounded-full ${
                     testText.toLowerCase().includes(agentName.toLowerCase())
-                      ? "bg-purple-100 text-purple-700"
-                      : "bg-green-100 text-green-700"
+                      ? "bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-100"
+                      : "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-100"
                   }`}>
                     {testText.toLowerCase().includes(agentName.toLowerCase())
                       ? "🤖 Agent Mode"
@@ -408,8 +408,8 @@ export default function PromptStudio({ className = "" }: PromptStudioProps) {
                 </div>
                 <div className={`border rounded-lg p-4 text-sm max-h-60 overflow-y-auto ${
                   testResult.startsWith("⚠️") || testResult.startsWith("❌")
-                    ? "bg-amber-50 border-amber-200 text-amber-800"
-                    : "bg-gray-50 border-gray-200"
+                    ? "bg-amber-50 border-amber-200 text-amber-800 dark:bg-amber-900/40 dark:border-amber-700 dark:text-amber-100"
+                    : "bg-card border-border text-foreground"
                 }`}>
                   <pre className="whitespace-pre-wrap">{testResult}</pre>
                 </div>
@@ -432,7 +432,7 @@ export default function PromptStudio({ className = "" }: PromptStudioProps) {
       />
 
       {/* Tab Navigation */}
-      <div className="flex border-b border-gray-200 mb-6">
+      <div className="flex border-b border-border mb-6">
         {[
           { id: "current", label: "Current Prompts", icon: Eye },
           { id: "edit", label: "Customize", icon: Edit3 },
@@ -446,7 +446,7 @@ export default function PromptStudio({ className = "" }: PromptStudioProps) {
               className={`flex items-center gap-2 px-4 py-2 border-b-2 transition-colors ${
                 activeTab === tab.id
                   ? "border-indigo-600 text-indigo-600"
-                  : "border-transparent text-gray-600 hover:text-gray-900"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
               }`}
             >
               <Icon className="w-4 h-4" />

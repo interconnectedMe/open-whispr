@@ -501,20 +501,20 @@ export default function SettingsPage({
             {/* App Updates Section */}
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-foreground mb-2">
                   App Updates
                 </h3>
-                <p className="text-sm text-gray-600 mb-4">
+                <p className="text-sm text-muted-foreground mb-4">
                   Keep OpenWhispr up to date with the latest features and
                   improvements.
                 </p>
               </div>
-              <div className="flex items-center justify-between p-4 bg-neutral-50 rounded-lg">
+              <div className="flex items-center justify-between p-4 bg-card border border-border rounded-lg">
                 <div>
-                  <p className="text-sm font-medium text-neutral-800">
+                  <p className="text-sm font-medium text-foreground">
                     Current Version
                   </p>
-                  <p className="text-xs text-neutral-600">
+                  <p className="text-xs text-muted-foreground">
                     {currentVersion || "Loading..."}
                   </p>
                 </div>
@@ -717,13 +717,13 @@ export default function SettingsPage({
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   Dictation Hotkey
                 </h3>
-                <p className="text-sm text-gray-600 mb-6">
+                <p className="text-sm text-muted-foreground mb-6">
                   Configure the key you press to start and stop voice dictation.
                 </p>
               </div>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-foreground mb-2">
                     Activation Key
                   </label>
                   <Input
@@ -732,12 +732,12 @@ export default function SettingsPage({
                     onChange={(e) => setDictationKey(e.target.value)}
                     className="text-center text-lg font-mono"
                   />
-                  <p className="text-xs text-gray-500 mt-2">
+                  <p className="text-xs text-muted-foreground mt-2">
                     Press this key from anywhere to start/stop dictation
                   </p>
                 </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-medium text-gray-900 mb-3">
+                <div className="bg-muted p-4 rounded-lg">
+                  <h4 className="font-medium text-foreground mb-3">
                     Click any key to select it:
                   </h4>
                   <React.Suspense
@@ -766,10 +766,10 @@ export default function SettingsPage({
             {/* Permissions Section */}
             <div className="border-t pt-8">
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-foreground mb-2">
                   Permissions
                 </h3>
-                <p className="text-sm text-gray-600 mb-6">
+                <p className="text-sm text-muted-foreground mb-6">
                   Test and manage app permissions for microphone and
                   accessibility.
                 </p>
@@ -805,37 +805,37 @@ export default function SettingsPage({
             {/* About Section */}
             <div className="border-t pt-8">
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-foreground mb-2">
                   About OpenWhispr
                 </h3>
-                <p className="text-sm text-gray-600 mb-6">
+                <p className="text-sm text-muted-foreground mb-6">
                   OpenWhispr converts your speech to text using AI. Press your
                   hotkey, speak, and we'll type what you said wherever your
                   cursor is.
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mb-6">
-                <div className="text-center p-4 border border-gray-200 rounded-xl bg-white">
+                <div className="text-center p-4 border border-border rounded-xl bg-card">
                   <div className="w-8 h-8 mx-auto mb-2 bg-indigo-600 rounded-lg flex items-center justify-center">
                     <Keyboard className="w-4 h-4 text-white" />
                   </div>
-                  <p className="font-medium text-gray-800 mb-1">
+                  <p className="font-medium text-foreground mb-1">
                     Default Hotkey
                   </p>
-                  <p className="text-gray-600 font-mono text-xs">
+                  <p className="text-muted-foreground font-mono text-xs">
                     {formatHotkeyLabel(dictationKey)}
                   </p>
                 </div>
-                <div className="text-center p-4 border border-gray-200 rounded-xl bg-white">
+                <div className="text-center p-4 border border-border rounded-xl bg-card">
                   <div className="w-8 h-8 mx-auto mb-2 bg-emerald-600 rounded-lg flex items-center justify-center">
                     <span className="text-white text-sm">🏷️</span>
                   </div>
-                  <p className="font-medium text-gray-800 mb-1">Version</p>
-                  <p className="text-gray-600 text-xs">
+                  <p className="font-medium text-foreground mb-1">Version</p>
+                  <p className="text-muted-foreground text-xs">
                     {currentVersion || "0.1.0"}
                   </p>
                 </div>
-                <div className="text-center p-4 border border-gray-200 rounded-xl bg-white">
+                <div className="text-center p-4 border border-border rounded-xl bg-card">
                   <div className="w-8 h-8 mx-auto mb-2 bg-green-600 rounded-lg flex items-center justify-center">
                     <span className="text-white text-sm">✓</span>
                   </div>
@@ -902,9 +902,9 @@ export default function SettingsPage({
                 </Button>
               </div>
 
-              <div className="space-y-3 mt-6 p-4 bg-rose-50 border border-rose-200 rounded-xl">
+              <div className="space-y-3 mt-6 p-4 bg-rose-50/80 dark:bg-rose-950/40 border border-rose-200/80 dark:border-rose-700/70 rounded-xl">
                 <h4 className="font-medium text-rose-900">Local Model Storage</h4>
-                <p className="text-sm text-rose-800">
+                <p className="text-sm text-rose-800 dark:text-rose-100">
                   Remove all downloaded Whisper models from your cache directory to reclaim disk space. You can re-download any model later.
                 </p>
                 <Button
@@ -915,7 +915,7 @@ export default function SettingsPage({
                 >
                   {isRemovingModels ? "Removing models..." : "Remove Downloaded Models"}
                 </Button>
-                <p className="text-xs text-rose-700">
+                <p className="text-xs text-rose-700 dark:text-rose-100/90">
                   Current cache location: <code>{cachePathHint}</code>
                 </p>
               </div>
@@ -927,7 +927,7 @@ export default function SettingsPage({
         return (
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="text-lg font-semibold text-foreground mb-4">
                 Speech to Text Processing
               </h3>
               <ProcessingModeSelector
@@ -940,8 +940,8 @@ export default function SettingsPage({
             </div>
 
             {!useLocalWhisper && (
-              <div className="space-y-4 p-4 bg-blue-50 border border-blue-200 rounded-xl">
-                <h4 className="font-medium text-blue-900">OpenAI-Compatible Cloud Setup</h4>
+              <div className="space-y-4 p-4 bg-blue-50/80 dark:bg-blue-900/40 border border-blue-200/80 rounded-xl">
+                <h4 className="font-medium text-blue-900 dark:text-blue-100">OpenAI-Compatible Cloud Setup</h4>
                 <ApiKeyInput
                   apiKey={openaiApiKey}
                   setApiKey={setOpenaiApiKey}
@@ -960,15 +960,15 @@ export default function SettingsPage({
                     </>
                   }
                 />
-                <div className="space-y-2">
-                  <label className="block text-sm font-medium text-blue-900">
+              <div className="space-y-2">
+                  <label className="block text-sm font-medium text-blue-900 dark:text-blue-100">
                     Custom Base URL (optional)
                   </label>
                   <Input
                     value={cloudTranscriptionBaseUrl}
                     onChange={(event) => setCloudTranscriptionBaseUrl(event.target.value)}
                     placeholder="https://api.openai.com/v1"
-                    className="text-sm"
+                    className="text-sm bg-card text-foreground"
                   />
                   <div className="flex items-center gap-2">
                     <Button
@@ -980,7 +980,7 @@ export default function SettingsPage({
                       Reset to Default
                     </Button>
                   </div>
-                  <p className="text-xs text-blue-800">
+                  <p className="text-xs text-blue-800 dark:text-blue-100">
                     Requests for cloud transcription use this OpenAI-compatible base URL. Leave empty to fall back to
                     <code className="ml-1">{API_ENDPOINTS.TRANSCRIPTION_BASE}</code>.
                   </p>
@@ -1001,8 +1001,8 @@ export default function SettingsPage({
             </div>
           )}
 
-          <div className="space-y-4 p-4 bg-gray-50 border border-gray-200 rounded-xl">
-            <h4 className="font-medium text-gray-900">Preferred Language</h4>
+              <div className="space-y-4 p-4 bg-muted border border-border rounded-xl">
+            <h4 className="font-medium text-foreground">Preferred Language</h4>
             <LanguageSelector
               value={preferredLanguage}
               onChange={(value) => {
@@ -1055,10 +1055,10 @@ export default function SettingsPage({
         return (
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-foreground mb-2">
                 AI Text Enhancement
               </h3>
-              <p className="text-sm text-gray-600 mb-6">
+              <p className="text-sm text-muted-foreground mb-6">
                 Configure how AI models clean up and format your transcriptions.
                 This handles commands like "scratch that", creates proper lists,
                 and fixes obvious errors while preserving your natural tone.
@@ -1097,20 +1097,20 @@ export default function SettingsPage({
         return (
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-foreground mb-2">
                 Agent Configuration
               </h3>
-              <p className="text-sm text-gray-600 mb-6">
+              <p className="text-sm text-muted-foreground mb-6">
                 Customize your AI assistant's name and behavior to make
                 interactions more personal and effective.
               </p>
             </div>
 
-            <div className="space-y-4 p-4 bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200 rounded-xl">
-              <h4 className="font-medium text-purple-900 mb-3">
+            <div className="space-y-4 p-4 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-950/60 dark:to-blue-950/60 border border-purple-200/80 dark:border-purple-700/70 rounded-xl">
+              <h4 className="font-medium text-purple-900 dark:text-purple-200 mb-3">
                 💡 How to use agent names:
               </h4>
-              <ul className="text-sm text-purple-800 space-y-2">
+              <ul className="text-sm text-purple-800 dark:text-purple-100 space-y-2">
                 <li>
                   • Say "Hey {agentName}, write a formal email" for specific
                   instructions
@@ -1130,8 +1130,8 @@ export default function SettingsPage({
               </ul>
             </div>
 
-            <div className="space-y-4 p-4 bg-gray-50 border border-gray-200 rounded-xl">
-              <h4 className="font-medium text-gray-900">Current Agent Name</h4>
+            <div className="space-y-4 p-4 bg-muted border border-border rounded-xl">
+              <h4 className="font-medium text-foreground">Current Agent Name</h4>
               <div className="flex gap-3">
                 <Input
                   placeholder="e.g., Assistant, Jarvis, Alex..."
@@ -1152,16 +1152,16 @@ export default function SettingsPage({
                   Save
                 </Button>
               </div>
-              <p className="text-xs text-gray-600 mt-2">
+              <p className="text-xs text-muted-foreground mt-2">
                 Choose a name that feels natural to say and remember
               </p>
             </div>
 
-            <div className="bg-blue-50 p-4 rounded-lg">
-              <h4 className="font-medium text-blue-900 mb-2">
+            <div className="bg-blue-50/80 dark:bg-blue-900/40 p-4 rounded-lg">
+              <h4 className="font-medium text-blue-900 dark:text-blue-100 mb-2">
                 🎯 Example Usage:
               </h4>
-              <div className="text-sm text-blue-800 space-y-1">
+              <div className="text-sm text-blue-800 dark:text-blue-100 space-y-1">
                 <p>
                   • "Hey {agentName}, write an email to my team about the
                   meeting"
@@ -1185,10 +1185,10 @@ export default function SettingsPage({
         return (
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-foreground mb-2">
                 AI Prompt Management
               </h3>
-              <p className="text-sm text-gray-600 mb-6">
+              <p className="text-sm text-muted-foreground mb-6">
                 View and customize the prompts that power OpenWhispr's AI text processing. 
                 Adjust these to change how your transcriptions are formatted and enhanced.
               </p>

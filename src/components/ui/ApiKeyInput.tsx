@@ -34,7 +34,7 @@ export default function ApiKeyInput({
 
   return (
     <div className={className}>
-      <label className="block text-sm font-medium text-neutral-700 mb-2">
+      <label className="block text-sm font-medium text-foreground mb-2">
         {label}
       </label>
       <div className="flex gap-3">
@@ -43,7 +43,7 @@ export default function ApiKeyInput({
           placeholder={placeholder}
           value={apiKey}
           onChange={(e) => setApiKey(e.target.value)}
-          className={`flex-1 ${variantClasses}`}
+          className={`flex-1 bg-card text-foreground ${variantClasses}`}
         />
         <Button
           variant="outline"
@@ -54,7 +54,7 @@ export default function ApiKeyInput({
         </Button>
       </div>
       {helpText && (
-        <p className="text-xs text-neutral-600 mt-2">{helpText}</p>
+        <p className="text-xs text-muted-foreground mt-2">{helpText}</p>
       )}
     </div>
   );
